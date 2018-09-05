@@ -1,14 +1,138 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Mambo Journals
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <ion-list>
+
+        <ion-list-header>Today</ion-list-header>
+    
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">My experience as a developer at Mambo</h2>
+            <p>When asked: 'What is your experience as a developer at Mambo microsytems?', a lot of things rush to my mind. There are different angles from which I can answer this question. Let's dive in then...</p>
+          </ion-item>
+      
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Review on TVD</h2>
+            <p>A few months after their parents are killed in a tragic car accident, Elena Gilbert and her brother, Jeremy, are trying to come to terms with their grief. For Elena, formerly popular and involved with school and her friends, it's a struggle to hide her sadness. </p>
+            
+          </ion-item>
+      
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Entry Three</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+          </ion-item>
+      
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Entry Four</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+           
+          </ion-item>
+    
+      </ion-list>
+    
+      <ion-list>
+    
+        <ion-list-header>Yesterday</ion-list-header>
+    
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Yesterdays Entry</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            
+          </ion-item>
+      
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Another Entry</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+           
+          </ion-item>
+      
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Another One</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            
+          </ion-item>
+      
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/logo.png">
+            </ion-avatar>
+            <h2 style="font-family: Georgia, serif; font-weight: bold">Bullseye</h2>
+            <p>Neigh!</p>
+            <ion-note item-end>2:08 am</ion-note>
+          </ion-item>
+    
+      </ion-list>
+    
+      <ion-list>
+    
+        <ion-list-header>Last Week</ion-list-header>
+    
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-barbie.png">
+          </ion-avatar>
+          <h2>Barbie</h2>
+          <p>So, who's ready for Ken's dream tour?</p>
+          <ion-note item-end>Sun</ion-note>
+        </ion-item>
+    
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-squeeze.png">
+          </ion-avatar>
+          <h2>Squeeze</h2>
+          <p>The claw is our master.</p>
+          <ion-note item-end>Fri</ion-note>
+        </ion-item>
+    
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-sarge.png">
+          </ion-avatar>
+          <h2>Sarge</h2>
+          <p>Code Red, repeat: We're at Code Red!</p>
+          <ion-note item-end>Wed</ion-note>
+        </ion-item>
+    
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-ts-bopeep.png">
+          </ion-avatar>
+          <h2>Bo Peep</h2>
+          <p>What would you say if I get someone else to watch the sheep for me tonight?</p>
+          <ion-note item-end>Mon</ion-note>
+        </ion-item>
+    
+      </ion-list>
+
+      <ion-fab right bottom margin="15px" (click)="newEntry()">
+          <button ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
+    
 </ion-content>

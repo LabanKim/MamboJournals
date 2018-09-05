@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>New Journal Entry</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item>
+    <ion-textarea rows="10000" [(ngModel)]="entry.content" placeholder="Type entry contents here...">
+
+    </ion-textarea>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer no-shadow>
+    <ion-toolbar position="bottom" (click)="showSaveAlert(entry)">
+      <button ion-button full round color="primary">Save</button>
+    </ion-toolbar>
+</ion-footer>

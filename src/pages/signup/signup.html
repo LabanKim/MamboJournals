@@ -1,0 +1,45 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Account Registration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="signupForm" (submit)="signUp()" novalidate>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input formControlName="username" type="text" 
+          [class.invalid]="!signupForm.controls.username.valid && blur">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input formControlName="email" type="email" 
+          [class.invalid]="!signupForm.controls.email.valid && blur">
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input formControlName="password" type="password" 
+          [class.invalid]="!signupForm.controls.password.valid && blur">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input formControlName="password" type="password" 
+        [class.invalid]="!signupForm.controls.password.valid && blur"></ion-input>
+      </ion-item>
+  
+      <button ion-button round block type="submit" [disabled]="!signupForm.valid">
+        Sign Up
+      </button>
+    </form>
+  </ion-content>
+

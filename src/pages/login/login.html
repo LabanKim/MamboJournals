@@ -1,0 +1,48 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <ion-item>
+          <ion-label floating>Email Address</ion-label>
+          <ion-input formControlName="email" type="email"
+            [class.invalid]="!loginForm.controls.email.valid && blur"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input formControlName="password" type="password" 
+          [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
+      </ion-item>
+  
+      <button ion-button round block type="submit" [disabled]="!loginForm.valid">
+        Login
+      </button>
+    
+  </form>
+
+  <button ion-button round block clear (click)="goToSignup()">
+      Create a new account
+    </button>
+
+    <div>
+
+      <button ion-button round block clear >
+        Forgot password?
+      </button>
+
+    </div>
+    
+
+</ion-content>
