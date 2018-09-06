@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 
-import { Observable } from 'rxjs/Observable';
 import { Journal } from '../../model/journal';
 import { JournalListService } from '../../services/journal-list.service';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 import { NewEntryPage } from '../new-entry/new-entry';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -14,21 +17,50 @@ import { NewEntryPage } from '../new-entry/new-entry';
 })
 export class HomePage {
 
-  journalList: Observable<Journal[]>
- 
-  constructor(public navCtrl: NavController, private journalListService: JournalListService) {
-    this.journalList = this.journalListService.getJournalList()
-      .snapshotChanges()
-      .map(
-      changes => {
-        return changes.map(c => ({
-          key: c.payload.key, ...c.payload.val()
-        }))
-      });
+  journalListRef$: any;
+  currentUser: firebase.User;
+  private userId: string;
+
+  private dateArray: Array<string>;
+
+  constructor(public navCtrl: NavController, private database: AngularFireDatabase, private auth: AngularFireAuth ) {
+
+    auth.authState.subscribe(user => {
+      this.currentUser = user;
+      
+      if (this.currentUser) {
+          this.userId = this.currentUser.uid;
+          
+        }
+
+        this.dateArray = ["One"];
+        
+  });
+    
   }
 
+  ionViewDidLoad() {
+
+    this.journalListRef$ = this.database.list('journalList/' + this.userId).valueChanges();
+
+    for (const entry of this.journalListRef$) {
+      
+      //this.dateArray = [entry.date];
+      console.log(entry);
+
+    }
+
+  }
+  
+
   newEntry(){
-    this.navCtrl.push(NewEntryPage);
+    //this.navCtrl.push(NewEntryPage);
+
+    for (const date of this.dateArray) {
+
+      console.log(date);
+      
+    }
   }
 
 }

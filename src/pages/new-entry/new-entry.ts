@@ -21,9 +21,11 @@ import { HomePage } from '../home/home';
 })
 export class NewEntryPage {
 
+  
   entry: Journal = {
     title: 'Default',
-    content: ''
+    content: '',
+    date: ''
   };
 
   public loading: Loading;
@@ -46,8 +48,9 @@ export class NewEntryPage {
       message: 'Enter the title of the journal entry below:',
       inputs: [
         {
-          name: 'username',
-          placeholder: 'Title'
+          name: 'title',
+          placeholder: 'Title',
+          
         }
       ],
       buttons: [
@@ -61,6 +64,8 @@ export class NewEntryPage {
         {
           text: 'Save',
           handler: data => {
+            this.entry.title= data.title;
+            this.getDate();
             this.journalListService.addJournal(this.entry).
             then(ref => {
               this.loading.dismiss().then( () => {
@@ -78,6 +83,17 @@ export class NewEntryPage {
     });
     alert.present();
 
+  }
+
+  getDate(){
+    var dateObj = new Date();
+    var year = dateObj.getFullYear();
+    var month = dateObj.getMonth();
+    var date = dateObj.getDate();
+
+    var monthArray = [ 'Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+    this.entry.date = year + '-' + monthArray[month] + '-' + date;
   }
 
 }
