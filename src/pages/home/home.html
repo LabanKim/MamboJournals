@@ -21,7 +21,7 @@
 
   <ion-list>
       <ion-list-header>Date</ion-list-header>
-      <ion-item *ngFor="let entry of journalListRef$ | async">
+      <ion-item *ngFor="let entry of journalListRef$ | async" (click)="itemSelected(entry)">
           <ion-avatar item-start>
             <img src="assets/imgs/logo.png">
           </ion-avatar>

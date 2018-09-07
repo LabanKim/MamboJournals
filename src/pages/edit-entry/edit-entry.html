@@ -1,0 +1,25 @@
+
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>{{entry.title}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+  
+    <ion-item>
+      <ion-textarea rows="10000" [(ngModel)]="entry.content" placeholder="Type entry contents here...">
+          {{entry.content}}
+      </ion-textarea>
+    </ion-item>
+  
+  </ion-content>
+  
+  <ion-footer no-shadow>
+      <ion-toolbar position="bottom">
+        <button ion-button full round color="primary" (click)="updateEntry(entry)">Update</button>
+      </ion-toolbar>
+  </ion-footer>

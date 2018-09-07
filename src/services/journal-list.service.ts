@@ -35,11 +35,11 @@ export class JournalListService {
         
     }
  
-    /*updateJournal(entry: Journal) {
-        return this.db.list<Journal>('journalList/' + this.userId).update( entry);
+    updateJournal(entry: Journal) {
+        return this.db.list<Journal>('journalList/' + this.userId).update( entry.key, entry);
     }
  
     removeNote(entry: Journal) {
         return this.db.list<Journal>('journalList/' + this.userId).remove(entry.key);
-    }*/
+    }
 }

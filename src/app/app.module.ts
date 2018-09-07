@@ -16,6 +16,8 @@ import { HomePage } from '../pages/home/home';
 import { NewEntryPage } from '../pages/new-entry/new-entry';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { ViewEntryPage } from '../pages/view-entry/view-entry';
+import { EditEntryPage } from '../pages/edit-entry/edit-entry';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { SignupPage } from '../pages/signup/signup';
     HomePage,
     NewEntryPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ViewEntryPage,EditEntryPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import { SignupPage } from '../pages/signup/signup';
     HomePage,
     NewEntryPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ViewEntryPage,
+    EditEntryPage
   ],
   providers: [
     StatusBar,
