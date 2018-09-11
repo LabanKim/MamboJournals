@@ -71,7 +71,10 @@ export class SignupPage {
         alert.present();
       });
     });
-    this.loading = this.loadingCtrl.create();
+    this.loading = this.loadingCtrl.create({
+      content: 'Creating account',
+        spinner: 'bubbles'
+    });
     this.loading.present();
 
 }

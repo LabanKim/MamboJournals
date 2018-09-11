@@ -74,7 +74,10 @@ export class LoginPage {
         alert.present();
       });
     });
-    this.loading = this.loadingCtrl.create();
+    this.loading = this.loadingCtrl.create({
+      content: 'Signing in...',
+        spinner: 'bubbles'
+    });
     this.loading.present();
 	}
 

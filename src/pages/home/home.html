@@ -8,25 +8,15 @@
 
 <ion-content>
 
-  <!-- <ion-item *ngFor="let entry of journalListRef$ | async">
-      <ion-list-header *ngIf="(entry.date != '2018-Sept-6')">{{entry.date}}</ion-list-header>
-      <ion-item *ngFor="let entry of journalListRef$ | async">
-          <ion-avatar item-start>
-            <img src="assets/imgs/logo.png">
-          </ion-avatar>
-          <h2 style="font-family: Georgia, serif; font-weight: bold">{{entry.title}}</h2>
-          <p>{{entry.content}}</p>
-      </ion-item>
-  </ion-item> -->
-
   <ion-list>
       <ion-list-header>Date</ion-list-header>
-      <ion-item *ngFor="let entry of journalListRef$ | async" (click)="itemSelected(entry)">
+      <ion-item *ngFor="let entry of journalListRef$ | async" (click)="chooseAction(entry)">
           <ion-avatar item-start>
-            <img src="assets/imgs/logo.png">
+            <img src="{{entry.image}}"> 
           </ion-avatar>
           <h2 style="font-family: Georgia, serif; font-weight: bold">{{entry.title}}</h2>
           <p>{{entry.content}}</p>
+
       </ion-item>
   </ion-list>
 

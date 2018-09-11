@@ -18,6 +18,10 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ViewEntryPage } from '../pages/view-entry/view-entry';
 import { EditEntryPage } from '../pages/edit-entry/edit-entry';
+import { LazyLoadImageModule } from 'ng2-lazyload-image';
+
+import { PictureUtils } from '../services/pictureUtils.service';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { EditEntryPage } from '../pages/edit-entry/edit-entry';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig.fire),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    LazyLoadImageModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +55,9 @@ import { EditEntryPage } from '../pages/edit-entry/edit-entry';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
     AuthService,
-    JournalListService
+    JournalListService,
+    PictureUtils,
+    Camera,
   ]
 })
 export class AppModule {}

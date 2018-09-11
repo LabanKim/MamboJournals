@@ -21,16 +21,14 @@ export class JournalListService {
               }
         });
 
-
-        this.journalListRef = this.db.list<Journal>('journalList/' + this.userId);
     }
  
     getJournalList() {
-        return this.db.list<Journal>('journalList/' + this.userId);
+        this.journalListRef = this.db.list<Journal>('journalList/' + this.userId);
+        return this.journalListRef;
     }
  
     addJournal(entry: Journal) {
-        console.error('Users id: '+ this.userId);
         return this.db.list<Journal>('journalList/' + this.userId).push(entry);
         
     }
@@ -39,7 +37,9 @@ export class JournalListService {
         return this.db.list<Journal>('journalList/' + this.userId).update( entry.key, entry);
     }
  
-    removeNote(entry: Journal) {
+    removeJournal(entry: Journal) {
         return this.db.list<Journal>('journalList/' + this.userId).remove(entry.key);
     }
+
+   
 }
