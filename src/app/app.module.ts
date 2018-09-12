@@ -18,6 +18,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ViewEntryPage } from '../pages/view-entry/view-entry';
 import { EditEntryPage } from '../pages/edit-entry/edit-entry';
+import { StatisticsPage } from '../pages/statistics/statistics';
 import { LazyLoadImageModule } from 'ng2-lazyload-image';
 
 import { PictureUtils } from '../services/pictureUtils.service';
@@ -30,7 +31,9 @@ import { Camera } from '@ionic-native/camera';
     NewEntryPage,
     LoginPage,
     SignupPage,
-    ViewEntryPage,EditEntryPage
+    ViewEntryPage,
+    EditEntryPage,
+    StatisticsPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { Camera } from '@ionic-native/camera';
     LoginPage,
     SignupPage,
     ViewEntryPage,
-    EditEntryPage
+    EditEntryPage,
+    StatisticsPage
   ],
   providers: [
     StatusBar,

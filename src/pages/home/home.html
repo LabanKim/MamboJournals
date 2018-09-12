@@ -3,13 +3,15 @@
     <ion-title>
       Mambo Journals
     </ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="viewStats()"><ion-icon name="stats" margin-right="15px" ></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
   <ion-list>
-      <ion-list-header>Date</ion-list-header>
       <ion-item *ngFor="let entry of journalListRef$ | async" (click)="chooseAction(entry)">
           <ion-avatar item-start>
             <img src="{{entry.image}}"> 

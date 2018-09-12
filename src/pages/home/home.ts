@@ -10,6 +10,9 @@ import { ViewEntryPage } from '../view-entry/view-entry';
 import { Observable } from 'rxjs/Observable';
 import { PictureUtils } from '../../services/pictureUtils.service';
 import { EditEntryPage } from '../edit-entry/edit-entry';
+import { StatisticsPage } from '../statistics/statistics';
+import firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-home',
@@ -17,41 +20,61 @@ import { EditEntryPage } from '../edit-entry/edit-entry';
 })
 export class HomePage {
 
-  journalListRef$: Observable<Journal[]>;
+  public journalListRef$: Observable<Journal[]>;
   public loading: Loading;
+
+  public items;
+  public itemRef: firebase.database.Reference;
+  private currentUser: firebase.User;
+  private userId: string;
+
+  totalEntries: any;
 
   constructor(
     private actionSheetCtrl: ActionSheetController,
     private pictureUtils: PictureUtils,
     public navCtrl: NavController,
+    public afAuth: AngularFireAuth,
     public loadingCtrl: LoadingController,
     private journalListService: JournalListService,
     private toastCtrl: ToastController) {
 
+      afAuth.authState.subscribe(user => {
+        this.currentUser = user;
+        
+        if (this.currentUser) {
+            this.userId = this.currentUser.uid;
+            
+          }
+    });
+
   }
 
   ionViewWillLoad() {
-
-      this.loading = this.loadingCtrl.create({
-        content: 'Loading entries...',
-        spinner: 'bubbles'
-      });
-      this.loading.present();
-
-      this.journalListRef$ = this.journalListService.getJournalList()
-              .snapshotChanges().map( changes => {
-                
-              this.loading.dismiss();
-              return changes.map( c => ({
-                  key: c.payload.key, 
-                  ...c.payload.val(),
-              }));
-          })
+    this.journalListRef$ = this.journalListService.getJournalList();
   }
   
+  /*ionViewWillLoad(){
+
+    this.itemRef = firebase.database().ref('journalList/' + this.userId);
+        this.itemRef.on('value', itemSnapshot => {
+            this.items = [];
+            itemSnapshot.forEach( itemSnap => {
+              this.items.push(itemSnap.val());
+              return false;
+            });
+            console.log(this.items)
+          });
+    this.totalEntries = this.items.length;
+
+  }*/
 
   newEntry(){
     this.navCtrl.push(NewEntryPage);
+  }
+
+  viewStats(){
+    this.navCtrl.push(StatisticsPage);
   }
 
   viewSelected(entry: Journal){

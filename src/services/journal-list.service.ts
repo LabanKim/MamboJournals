@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Journal } from '../model/journal';
+import { LoadingController, Loading } from 'ionic-angular';
+import firebase from 'firebase';
+import { Observable } from 'rxjs';
  
 @Injectable()
 export class JournalListService {
@@ -9,8 +12,10 @@ export class JournalListService {
     private journalListRef: any;
     private currentUser: firebase.User;
     private userId: string;
- 
-    constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) { 
+    private loading: Loading;
+
+    
+    constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth, private loadingCtrl: LoadingController) { 
 
         afAuth.authState.subscribe(user => {
             this.currentUser = user;
@@ -24,7 +29,22 @@ export class JournalListService {
     }
  
     getJournalList() {
-        this.journalListRef = this.db.list<Journal>('journalList/' + this.userId);
+        this.loading = this.loadingCtrl.create({
+            content: 'Loading entries...',
+            spinner: 'bubbles'
+          });
+          this.loading.present();
+    
+          this.journalListRef = this.db.list<Journal>('journalList/' + this.userId)
+                  .snapshotChanges().map( changes => {
+                    
+                  this.loading.dismiss();
+                  return changes.map( c => ({
+                      key: c.payload.key, 
+                      ...c.payload.val(),
+                  }));
+              })
+
         return this.journalListRef;
     }
  

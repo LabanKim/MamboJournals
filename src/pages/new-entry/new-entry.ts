@@ -12,6 +12,7 @@ import { Journal } from '../../model/journal';
 import { JournalListService } from '../../services/journal-list.service';
 
 import { HomePage } from '../home/home';
+import firebase from 'firebase';
 
 
 @IonicPage()
@@ -86,14 +87,7 @@ export class NewEntryPage {
   }
 
   getDate(){
-    var dateObj = new Date();
-    var year = dateObj.getFullYear();
-    var month = dateObj.getMonth();
-    var date = dateObj.getDate();
-
-    var monthArray = [ 'Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-
-    this.entry.date = year + '-' + monthArray[month] + '-' + date;
+    this.entry.date = firebase.database.ServerValue.TIMESTAMP;
   }
 
 }
